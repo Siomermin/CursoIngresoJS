@@ -9,6 +9,83 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
 
  */
 function CalcularPrecio () 
-{
- 	
+{  
+    let cantidadLamparas;
+    let precioLamparas = 35;
+    let precioBase;
+    let precioFinal;
+    let marca;
+    let descuento;
+    let impuesto;
+
+    cantidadLamparas = parseInt(document.getElementById("txtIdCantidad").value);
+
+    marca = document.getElementById("Marca").value;
+
+    precioBase = cantidadLamparas * precioLamparas;
+
+    if(cantidadLamparas >= 6){
+        switch(marca){       
+            default:
+                descuento = precioBase * 0.50;
+                
+        }    
+    }else if(cantidadLamparas == 5){
+        switch(marca){
+            case "ArgentinaLuz":
+                descuento = precioBase * 0.40;
+                
+            break;
+
+            default:
+                descuento = precioBase * 0.30;
+               
+        }
+    } 
+    else if(cantidadLamparas == 4){
+        switch(marca){
+            case "ArgentinaLuz":
+            case "FelipeLamparas":
+                descuento = precioBase * 0.25;
+                
+            break;
+
+            default:
+                descuento = precioBase * 0.20;
+               
+        }
+    }
+    else if(cantidadLamparas == 3){
+        switch(marca){
+            case "ArgentinaLuz":
+                descuento = precioBase * 0.15;
+                
+            break;
+
+            case "FelipeLamparas":
+                descuento = precioBase * 0.10;
+                
+            break;
+
+            default:
+                descuento = precioBase * 0.05;
+                
+
+        }
+    }
+    else{
+        document.getElementById("txtIdprecioDescuento").value = precioBase;
+    }
+
+    precioFinal = precioBase - descuento;
+    
+    if(precioFinal > 120){
+        impuesto = precioFinal * 0.10;
+        precioFinal = precioFinal + impuesto;
+        alert("Usted pago " + impuesto +  " pesos de IIBB.");
+        document.getElementById("txtIdprecioDescuento").value = precioFinal;
+    }
+
+
+    
 }
